@@ -1,0 +1,7 @@
+arduino-web-control/
+├── app.py                 # Backend Flask
+├── static/
+│   ├── script.js          # JavaScript terpisah
+│   └── style.css          # CSS tambahan
+└── templates/
+    └── index.html         # Frontend HTML

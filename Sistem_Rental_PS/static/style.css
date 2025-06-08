@@ -1,0 +1,94 @@
+/* LED Visual Effects */
+.led-on {
+    background: radial-gradient(circle, #22c55e, #16a34a);
+    border-color: #22c55e;
+    box-shadow: 0 0 20px #22c55e, 0 0 40px #22c55e, 0 0 60px #22c55e;
+    animation: pulse-green 1s infinite alternate;
+}
+
+.led-off {
+    background: #e5e7eb;
+    border-color: #d1d5db;
+    box-shadow: none;
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 20px #22c55e, 0 0 40px #22c55e, 0 0 60px #22c55e;
+    }
+    100% {
+        box-shadow: 0 0 10px #22c55e, 0 0 20px #22c55e, 0 0 30px #22c55e;
+    }
+}
+
+/* Status Indicator Animation */
+.status-connected {
+    background-color: #22c55e;
+    animation: pulse-status 2s infinite;
+}
+
+.status-disconnected {
+    background-color: #ef4444;
+}
+
+@keyframes pulse-status {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Message Toast Styles */
+.toast {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    animation: slideIn 0.3s ease-out;
+}
+
+.toast-success {
+    background-color: #22c55e;
+    color: white;
+}
+
+.toast-error {
+    background-color: #ef4444;
+    color: white;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Button Loading State */
+.btn-loading {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-loading::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    margin: 0 0 0 8px;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

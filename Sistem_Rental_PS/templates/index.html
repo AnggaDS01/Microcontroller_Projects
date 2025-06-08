@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino LED Controller</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">Arduino LED Controller</h1>
+            <p class="text-gray-600">Control your Arduino LED through web interface</p>
+        </div>
+
+        <!-- Status Card -->
+        <div class="max-w-md mx-auto mb-8">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800">Connection Status</h2>
+                    <div id="status-indicator" class="w-3 h-3 rounded-full bg-red-500"></div>
+                </div>
+                <p id="status-text" class="text-gray-600 mb-4">Checking connection...</p>
+                
+                <!-- Port Selection -->
+                <div id="port-selection" class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Select Arduino Port:</label>
+                    <select id="port-select" class="w-full border border-gray-300 rounded-lg px-3 py-2 mb-3">
+                        <option value="">Loading ports...</option>
+                    </select>
+                    <button id="scan-ports-btn" class="text-sm text-blue-500 hover:text-blue-600">Refresh Ports</button>
+                </div>
+                
+                <button id="connect-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+                    Connect to Arduino  
+                </button>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="max-w-md mx-auto">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-6 text-center">LED Control</h2>
+                
+                <!-- LED Visual Indicator -->
+                <div class="flex justify-center mb-6">
+                    <div id="led-visual" class="w-16 h-16 rounded-full border-4 border-gray-300 bg-gray-200 transition-all duration-300 led-off"></div>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <button id="led-on-btn" class="bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg transition duration-200 transform hover:scale-105">
+                        LED ON
+                    </button>
+                    <button id="led-off-btn" class="bg-red-500 hover:bg-red-600 text-white font-medium py-3 px-6 rounded-lg transition duration-200 transform hover:scale-105">
+                        LED OFF
+                    </button>
+                </div>
+
+                <!-- Response Display -->
+                <div id="response-container" class="hidden">
+                    <h3 class="text-sm font-medium text-gray-700 mb-2">Arduino Response:</h3>
+                    <div id="response-text" class="bg-gray-100 rounded-lg p-3 text-sm text-gray-800 font-mono"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message Display -->
+        <div id="message-container" class="fixed top-4 right-4 z-50"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
